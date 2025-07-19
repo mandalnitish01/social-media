@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
-import { PostList } from "../Store/Post-list-store";
+import { PostList } from "../Store/post-list-store";
 const Post = ({ post }) => {
   
   const {deletePost} = useContext(PostList);
@@ -10,7 +10,7 @@ const Post = ({ post }) => {
       <div className="card-body">
         <h5 className="card-title">
           {post.title}
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           onClick={() => deletePost(post.id)}>
             <MdDelete />
             

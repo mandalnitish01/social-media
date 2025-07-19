@@ -1,4 +1,4 @@
-import { createContext, useId, useReducer } from "react";
+import { createContext, useId, useReducer , useEffect } from "react";
 
 export const PostList = createContext({
   postList: [],
@@ -15,12 +15,22 @@ const postListReducer = (currPostList, action) => {
   }
   return newPostList; 
 };
+//Start Local Storage getItem
+//initilized post list container.
+   const initializer = () => {
+    //getitem from localstorage whoes name is postList. And store it in a localData variable.
+  const localData = localStorage.getItem("postList");
+  //return localData otherwise default post
+  return localData ? JSON.parse(localData) : DEFAULT_POST_LIST;
+};
 
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(
     postListReducer,
-    DEFAULT_POST_LIST
+    DEFAULT_POST_LIST,
+    initializer //addes newpost here
   );
+
   const addPost = (userId,postTitle,postBody,reactions,tags) => {
     dispatchPostList({
       type : "ADD_POST",
@@ -35,7 +45,6 @@ const PostListProvider = ({ children }) => {
     })
   };
 
-
   const deletePost = (postId) => {
      dispatchPostList({
       type: "DELETE_POST",
@@ -45,6 +54,13 @@ const PostListProvider = ({ children }) => {
      })
   };
 
+  //csetItems in localstorage
+useEffect(() => {
+    localStorage.setItem("postList", JSON.stringify(postList))
+  }, [postList]);
+  //end of local storage
+
+  
   return (
     <PostList.Provider value={{ postList, addPost, deletePost }}>
       {children}
@@ -76,6 +92,22 @@ const DEFAULT_POST_LIST = [
     body: " completing b-tech. Hope to enjoy a lot. peace out.",
     reactions: 15,
     userId: "user-13",
+    tags: ["unbelivable", "graduation", "Enjoying"],
+  },
+   {
+    id: "4",
+    title: "going to mumbai",
+    body: " Hi friends I am going to mumbai for my vacations. Hope to enjoy a lot. peace out.",
+    reactions: 2,
+    userId: "user-9",
+    tags: ["vacation", "Mumbai", "Enjoying"],
+  },
+  {
+    id: "5",
+    title: "b-tech final",
+    body: " completing b-tech. Hope to enjoy a lot. peace out.",
+    reactions: 15,
+    userId: "user-12",
     tags: ["unbelivable", "graduation", "Enjoying"],
   },
 

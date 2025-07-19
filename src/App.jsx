@@ -23,7 +23,7 @@ function App() {
             <CreatePost></CreatePost>
           )}
 
-          <Footer></Footer>
+          {/* <Footer></Footer> */} //disable the footer 
         </div>
       </div>
      </PostListProvider>

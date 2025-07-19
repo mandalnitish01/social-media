@@ -35,4 +35,35 @@
 
 
 
+/* post card design  */
+
+.postcontainer {
+  width: calc(100% - 300px); /* because your sidebar is 300px fixed */
+  margin-left: 250px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 90vh; /* so the grid can scroll inside */
+
+  margin-top: 50px;
+}
+
+/* cards container */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 3 columns */
+  height: 100%;
+  overflow-y: auto; /* scrolls if too many rows */
+  padding-right: 10px; /* to avoid scrollbar overlap */
+  box-sizing: border-box;
+}
+
+
+.create-post{
+  margin-left: 20%;
+  margin-top: 100px;
+}
+
+.FooterContainer{
+  margin-top: 18%;
+}
 

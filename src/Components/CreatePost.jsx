@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 // import PostList from "./PostList";
-import {PostList} from "../Store/Post-list-store";
+import {PostList} from "../Store/post-list-store";
 
 
 const CreatePost = () => {

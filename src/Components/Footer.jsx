@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <>
-      <div className="container">
+    <div className="fixed-top sticky-top">
+      <div className="FooterContainer">
         <footer className="py-3 my-4">
           <ul className="nav justify-content-center border-bottom pb-3 mb-3">
             <li className="nav-item">
@@ -33,7 +33,7 @@ const Footer = () => {
           <p className="text-center text-body-secondary">© 2025 Company, Inc</p>
         </footer>
       </div>
-    </>
+    </div>
   );
 };
 
